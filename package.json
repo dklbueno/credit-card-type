@@ -34,5 +34,8 @@
     "testPathIgnorePatterns": [
       "<rootDir>/src/__tests__/helper.ts"
     ]
-  }
+  },
+  "precommit": [
+    "build"
+  ]
 }

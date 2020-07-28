@@ -194,6 +194,17 @@ const cardTypes: CardCollection = {
       size: 3,
     },
   } as BuiltInCreditCardType,
+  aura: {
+    niceType: "Aura",
+    type: "aura",
+    patterns: [50],
+    gaps: [4, 8, 12],
+    lengths: [16],
+    code: {
+      name: "CVC",
+      size: 3,
+    },
+  } as BuiltInCreditCardType,
 };
 
 export = cardTypes;

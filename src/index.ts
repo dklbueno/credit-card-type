@@ -86,10 +86,34 @@ function creditCardType(cardNumber: string): Array<CreditCardType> {
   const bestMatch = findBestMatch(results) as CreditCardType;
 
   if (bestMatch) {
+    var brand: string =
+      getCardExtra(cardNumber) != "" ? getCardExtra(cardNumber) : "";
+    if (brand) {
+      console.log(brand);
+      return [cardTypes[brand]];
+    }
     return [bestMatch];
   }
 
   return results;
+}
+
+function getCardExtra(cardNumber: string): string {
+  var cardNumber = cardNumber.replace(/[^0-9]+/g, "");
+
+  var cards: { [key: string]: RegExp } = {
+    elo: /^4011|438935|45(1416|76)|50(4175|6699|67|90[4-7])|63(6297|6368)/,
+    aura: /^50/,
+    jcb: /^(?:2131|1800|35\d{3})\d{11}/,
+  };
+
+  for (var flag in cards) {
+    if (cards[flag].test(cardNumber)) {
+      return flag;
+    }
+  }
+
+  return "";
 }
 
 creditCardType.getTypeInfo = (cardType: string): CreditCardType =>
@@ -149,3 +173,5 @@ creditCardType.resetModifications = (): void => {
 creditCardType.types = cardNames;
 
 export = creditCardType;
+
+//console.log(creditCardType("3543075239371354"));

@@ -89,7 +89,6 @@ function creditCardType(cardNumber: string): Array<CreditCardType> {
     var brand: string =
       getCardExtra(cardNumber) != "" ? getCardExtra(cardNumber) : "";
     if (brand) {
-      console.log(brand);
       return [cardTypes[brand]];
     }
     return [bestMatch];

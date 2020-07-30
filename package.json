@@ -10,7 +10,8 @@
     "test": "jest",
     "prepublishOnly": "npm run build",
     "prebuild": "prettier --write .",
-    "build": "tsc --declaration"
+    "build": "tsc --declaration",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -34,8 +35,5 @@
     "testPathIgnorePatterns": [
       "<rootDir>/src/__tests__/helper.ts"
     ]
-  },
-  "precommit": [
-    "build"
-  ]
+  }
 }
